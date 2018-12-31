@@ -9,7 +9,8 @@
     "@types/react-dom": "*",
     "react": "latest",
     "react-dom": "latest",
-    "react-scripts": "latest"
+    "react-scripts": "latest",
+    "tslint-config-airbnb": "^5.11.1"
   },
   "devDependencies": {
     "@types/jest": "*",
