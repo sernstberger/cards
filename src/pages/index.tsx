@@ -46,7 +46,7 @@ class Index extends React.Component<WithStyles<typeof styles>, State> {
         <Dialog open={this.state.open} onClose={this.handleClose}>
           <DialogTitle>Super Secret Password</DialogTitle>
           <DialogContent>
-            <DialogContentText>1-2-3-4-5</DialogContentText>
+            <DialogContentText>1-2-3</DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button color="primary" onClick={this.handleClose}>
