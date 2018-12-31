@@ -16,33 +16,68 @@ const styles = (theme: Theme) =>
     },
   });
 
+export interface ICard {
+  id: number;
+  name: string;
+}
+
 type State = {
-  open: boolean;
+  cards: ICard[] | undefined;
 };
 
-const cards = [
+// silver = 1000 - 1999
+// gold = 2000 - 2999
+// platinum = 3000 - 3999
+// legend = 4000 - 4999
+
+const cards: ICard[] = [
   {
-    id: 1,
+    id: 2000,
     name: "Barkevious Mingo",
   },
 
   {
-    id: 2,
+    id: 3000,
     name: "Andrew Luck",
   },
 
   {
-    id: 3,
+    id: 1000,
     name: "Joe Haeg",
   },
 
   {
-    id: 4,
+    id: 1001,
+    name: "Ryan Grant",
+  },
+
+  {
+    id: 1002,
+    name: "Zack Pascal",
+  },
+  
+  {
+    id: 1003,
+    name: "Zack Rascal",
+  },
+
+  {
+    id: 1004,
+    name: "Zack Mascal",
+  },
+
+  {
+    id: 1005,
+    name: "Wack Nascal",
+  },
+
+  {
+    id: 2001,
     name: "Quenton Nelson",
   },
 
   {
-    id: 5,
+    id: 4000,
     name: "Dwight Freeney",
   },
 ];
@@ -55,26 +90,25 @@ function getRandomInt(min: number, max: number) {
 
 class Index extends React.Component<WithStyles<typeof styles>, State> {
   state = {
-    open: false,
-  };
-
-  handleClose = () => {
-    this.setState({
-      open: false,
-    });
+    cards: [] as ICard[],
   };
 
   handleClick = () => {
+    const randomNumber: number = getRandomInt(1000, 1005);
+    const result: ICard | undefined = cards.find( card => card.id === randomNumber );
+
+    console.log(result);
+
+    const blah: ICard[] = this.state.cards.concat(result as ICard);
+    console.log(blah);
+
     this.setState({
-      open: true,
-    });
+      // cards: this.state.cards.push(result),
+      cards: blah,
+    }, () => console.log("yep", this.state.cards));
   };
 
   render() {
-    const randomNumber = getRandomInt(1, 5);
-    const result = cards.find( fruit => fruit.id === randomNumber );
-
-    console.log(result);
     return (
       <div className={this.props.classes.root}>
         <Typography variant="h4" gutterBottom>
@@ -83,9 +117,14 @@ class Index extends React.Component<WithStyles<typeof styles>, State> {
         <Typography variant="subtitle1" gutterBottom>
           example project
         </Typography>
-        <Card
+        {/* <Card
           name={result!.name}
-        />
+        /> */}
+
+        <Button onClick={() => this.handleClick()}>
+          Random Player
+        </Button>
+
         {/* {result && result!.map((card, index) => {
           return (
             <Card
