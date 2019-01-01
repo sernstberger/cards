@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import createStyles from '@material-ui/core/styles/createStyles';
@@ -19,6 +20,7 @@ const styles = (theme: Theme) =>
 export interface ICard {
   id: number;
   name: string;
+  rating: number;
 }
 
 type State = {
@@ -34,51 +36,61 @@ const cards: ICard[] = [
   {
     id: 2000,
     name: "Barkevious Mingo",
+    rating: 80,
   },
 
   {
     id: 3000,
     name: "Andrew Luck",
+    rating: 80,
   },
 
   {
     id: 1000,
     name: "Joe Haeg",
+    rating: 80,
   },
 
   {
     id: 1001,
     name: "Ryan Grant",
+    rating: 81,
   },
 
   {
     id: 1002,
     name: "Zack Pascal",
+    rating: 82,
   },
   
   {
     id: 1003,
     name: "Zack Rascal",
+    rating: 83,
   },
 
   {
     id: 1004,
     name: "Zack Mascal",
+    rating: 84,
   },
 
   {
     id: 1005,
     name: "Wack Nascal",
+    rating: 85,
   },
 
   {
     id: 2001,
     name: "Quenton Nelson",
+    rating: 80,
   },
 
   {
     id: 4000,
     name: "Dwight Freeney",
+    rating: 80,
   },
 ];
 
@@ -117,22 +129,21 @@ class Index extends React.Component<WithStyles<typeof styles>, State> {
         <Typography variant="subtitle1" gutterBottom>
           example project
         </Typography>
-        {/* <Card
-          name={result!.name}
-        /> */}
 
-        <Button onClick={() => this.handleClick()}>
+        <Button variant="contained" onClick={() => this.handleClick()}>
           Random Player
         </Button>
 
-        {/* {result && result!.map((card, index) => {
-          return (
-            <Card
-              key={index}
-              name={card.name}
-            />
-          );
-        })} */}
+        <Grid container spacing={32}>
+          {this.state.cards.map((card: ICard, index: number) => {
+            return (
+              <Grid key={index} item xs={3}>
+                <Card info={card} />
+              </Grid>
+            );
+          })}
+
+        </Grid>
       </div>
     );
   }

@@ -25,7 +25,7 @@ const styles = {
 };
 
 export interface IProps {
-  name: string;
+  info: any; // will be ICard
   classes: any;
 }
 
@@ -37,8 +37,10 @@ const SimpleCard: React.SFC<IProps> = (props) => {
   return (
     <Card className={classes.card}>
       <CardContent>
+        <img src="https://crasstalk.com/wp-content/uploads/2012/04/Luck-IND-copy-952x1024.png" height="100" alt="alskfj" />
+        <Typography>{props.info.rating}</Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.name}
+          {props.info.name}
         </Typography>
       </CardContent>
     </Card>
