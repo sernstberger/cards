@@ -7,6 +7,8 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import withRoot from '../withRoot';
 
+import { cards, ICard } from "../data";
+
 import Card from "../components/Card";
 
 const styles = (theme: Theme) =>
@@ -17,82 +19,9 @@ const styles = (theme: Theme) =>
     },
   });
 
-export interface ICard {
-  id: number;
-  name: string;
-  rating: number;
-}
-
 type State = {
   cards: ICard[] | undefined;
 };
-
-// silver = 1000 - 1999
-// gold = 2000 - 2999
-// platinum = 3000 - 3999
-// legend = 4000 - 4999
-
-const cards: ICard[] = [
-  {
-    id: 2000,
-    name: "Barkevious Mingo",
-    rating: 80,
-  },
-
-  {
-    id: 3000,
-    name: "Andrew Luck",
-    rating: 80,
-  },
-
-  {
-    id: 1000,
-    name: "Joe Haeg",
-    rating: 80,
-  },
-
-  {
-    id: 1001,
-    name: "Ryan Grant",
-    rating: 81,
-  },
-
-  {
-    id: 1002,
-    name: "Zack Pascal",
-    rating: 82,
-  },
-  
-  {
-    id: 1003,
-    name: "Zack Rascal",
-    rating: 83,
-  },
-
-  {
-    id: 1004,
-    name: "Zack Mascal",
-    rating: 84,
-  },
-
-  {
-    id: 1005,
-    name: "Wack Nascal",
-    rating: 85,
-  },
-
-  {
-    id: 2001,
-    name: "Quenton Nelson",
-    rating: 80,
-  },
-
-  {
-    id: 4000,
-    name: "Dwight Freeney",
-    rating: 80,
-  },
-];
 
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);

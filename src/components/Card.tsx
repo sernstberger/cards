@@ -7,14 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import { ICard } from "../data";
+
 const styles = {
   card: {
     minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
   },
   title: {
     fontSize: 14,
@@ -25,31 +22,29 @@ const styles = {
 };
 
 export interface IProps {
-  info: any; // will be ICard
+  info: ICard;
   classes: any;
 }
 
 const SimpleCard: React.SFC<IProps> = (props) => {
-// function SimpleCard(props) {
   const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
+  const cardInfo = props.info;
 
   return (
     <Card className={classes.card}>
       <CardContent>
-        <img src="https://crasstalk.com/wp-content/uploads/2012/04/Luck-IND-copy-952x1024.png" height="100" alt="alskfj" />
-        <Typography>{props.info.rating}</Typography>
+        <img src="https://crasstalk.com/wp-content/uploads/2012/04/Luck-IND-copy-952x1024.png" style={{ width: "100%" }} alt="alskfj" />
+        <Typography variant="h3">{cardInfo.rating}</Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.info.name}
+          {cardInfo.firstName}
+        </Typography>
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          {cardInfo.lastName}
         </Typography>
       </CardContent>
     </Card>
   );
 }
-
-// SimpleCard.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
 
 export default withStyles(styles)(SimpleCard);
 
